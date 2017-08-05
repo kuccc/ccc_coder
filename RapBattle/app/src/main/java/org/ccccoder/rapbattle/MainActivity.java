@@ -29,10 +29,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
-import org.ccccoder.rapbattle.Fragment.Fragment_Home;
 import org.ccccoder.rapbattle.Fragment.LoginFragment;
 import org.ccccoder.rapbattle.Fragment.RecordFragment;
-import org.ccccoder.rapbattle.Fragment.RecordListFragment;
 import org.ccccoder.rapbattle.Fragment.RecordListFragment2;
 import org.ccccoder.rapbattle.Fragment.TitleListFragment;
 
@@ -188,7 +186,7 @@ public class MainActivity extends AppCompatActivity
                     } else {
                         EndHandler.sendEmptyMessage(1);
                     }
-//Toast.makeText(getActivity().getApplicationContext(),responseString,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity().getApplicationContext(),responseString,Toast.LENGTH_LONG).show();
                 } catch (URISyntaxException e) {
                     Log.e(TAG, e.getLocalizedMessage());
                     e.printStackTrace();

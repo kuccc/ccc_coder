@@ -180,7 +180,6 @@ public class LoginFragment extends Fragment {
                     List<BasicNameValuePair> nameValuePairs = new ArrayList<BasicNameValuePair>(2);
                     nameValuePairs.add(new BasicNameValuePair("idInput", id));
                     nameValuePairs.add(new BasicNameValuePair("pwInput", pw));
-
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 
