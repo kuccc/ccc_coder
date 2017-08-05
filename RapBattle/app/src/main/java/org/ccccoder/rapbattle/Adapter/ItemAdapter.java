@@ -153,7 +153,6 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             super(itemView);
             ivFeedCenter = (TextView)itemView.findViewById(R.id.ivFeedCenter);//Image->text
             btnLike = (ImageButton)itemView.findViewById(R.id.btnLike);
-            btnMore = (ImageButton)itemView.findViewById(R.id.btnMore);
             vBgLike = (View)itemView.findViewById(R.id.vBgLike);
             ivLike = (ImageView)itemView.findViewById(R.id.ivLike);
             tsLikesCounter = (TextSwitcher)itemView.findViewById(R.id.tsLikesCounter);
