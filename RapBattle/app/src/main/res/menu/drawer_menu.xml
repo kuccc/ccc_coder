@@ -28,9 +28,9 @@
     <item android:title="Configuration">
         <menu>
             <item
-                android:id="@+id/setting"
+                android:id="@+id/logout"
                 android:icon="@drawable/ic_settings_black"
-                android:title="Setting" />
+                android:title="Logout" />
         </menu>
     </item>
 

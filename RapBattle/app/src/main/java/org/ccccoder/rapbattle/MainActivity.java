@@ -130,10 +130,12 @@ public class MainActivity extends AppCompatActivity
             title = "비트 모음";
         } else if (id == R.id.hot_list) {
             fragment = new RecordListFragment();
-            title = "HOT LIST";
-        } else if (id == R.id.setting) {
-            fragment = new RecordListFragment();
-            title = "Settings";
+            title = "HOT 리스트";
+        } else if (id == R.id.logout) {
+            editor.clear(); //실패시 초기화
+            editor.commit();
+            fragment = new LoginFragment();
+            title = "로그아웃";
         }
 
         if (fragment != null) {
