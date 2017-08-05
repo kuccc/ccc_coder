@@ -28,7 +28,7 @@
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:imeOptions="flagNoExtractUi"
             android:hint="Password"
-            android:inputType="text" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
     <TextView
         android:visibility="invisible"

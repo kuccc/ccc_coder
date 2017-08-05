@@ -11,7 +11,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -99,6 +101,8 @@ public class LoginFragment extends Fragment {
         editor = pref.edit();
         input_id = (EditText)view.findViewById(R.id.input_id);
         input_pw = (EditText)view.findViewById(R.id.input_pw);
+        input_pw.setInputType( InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD );
+        input_pw.setTransformationMethod(PasswordTransformationMethod.getInstance());
         login_btn = (Button)view.findViewById(R.id.login);
         register_btn = (Button)view.findViewById(R.id.register);
         message = (TextView)view.findViewById(R.id.message);
