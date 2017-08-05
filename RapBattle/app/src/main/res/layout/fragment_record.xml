@@ -58,7 +58,18 @@
         android:layout_above="@+id/btnRecord"
         android:layout_marginBottom="18dp"
         android:layout_centerHorizontal="true" />
+<Button
+    android:id="@+id/play_btn"
+    android:text="재생"
+    android:visibility="invisible"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/chronometer"
+    android:layout_alignStart="@+id/recordProgressBar"
+    android:layout_alignBottom="@+id/chronometer"
+    android:layout_alignEnd="@+id/recordProgressBar">
 
+</Button>
     <Button
         android:layout_centerHorizontal="true"
         android:layout_width="10dp"

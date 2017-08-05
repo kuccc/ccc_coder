@@ -31,7 +31,7 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.ccccoder.rapbattle.Fragment.LoginFragment;
 import org.ccccoder.rapbattle.Fragment.RecordFragment;
-import org.ccccoder.rapbattle.Fragment.RecordListFragment2;
+import org.ccccoder.rapbattle.Fragment.RecordListFragment;
 import org.ccccoder.rapbattle.Fragment.TitleListFragment;
 
 import java.io.IOException;
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         pref = getSharedPreferences("Auto_loginInfo2", Activity.MODE_PRIVATE);
         editor = pref.edit();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,14 +71,11 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //SharedPreferences pref = getSharedPreferences("IsAutoLogin", Activity.MODE_PRIVATE);
-        isAuto();
+        isAuto(); //자동로그인 or 로그인 창이동
     }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -118,31 +116,27 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = new LoginFragment();
         String title = getString(R.string.app_name);
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.make_rap) {
             fragment = new RecordFragment();
-            title = "나의 랩 보기";
-        } else if (id == R.id.nav_gallery) {
+            title = "랩 만들기";
+        } else if (id == R.id.my_rap) {
             fragment = new TitleListFragment();
-            title = "랩 주제 보기";
-        } else if (id == R.id.nav_slideshow) {
-            fragment = new RecordListFragment2();
-            title = "Rap Tournament";
-
-        } else if (id == R.id.nav_share) {
-            fragment = new Fragment_Home();
-            title = "Search";
-
-        } else if (id == R.id.nav_send) {
-            fragment = new Fragment_Home();
+            title = "나의 랩 모음";
+        } else if (id == R.id.title_list) {
+            fragment = new TitleListFragment();
+            title = "주제 모음";
+        } else if (id == R.id.bit_list) {
+            fragment = new RecordListFragment();
+            title = "비트 모음";
+        } else if (id == R.id.hot_list) {
+            fragment = new RecordListFragment();
+            title = "HOT LIST";
+        } else if (id == R.id.setting) {
+            fragment = new RecordListFragment();
             title = "Settings";
-
         }
 
         if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_fragment_layout, fragment);
-            ft.commit();
-        }else{
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_fragment_layout, fragment);
             ft.commit();
