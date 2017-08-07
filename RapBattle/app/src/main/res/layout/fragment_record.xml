@@ -58,7 +58,8 @@
         android:layout_above="@+id/btnRecord"
         android:layout_marginBottom="18dp"
         android:layout_centerHorizontal="true" />
-<Button
+<!--
+    <Button
     android:id="@+id/play_btn"
     android:text="재생"
     android:visibility="invisible"
@@ -68,6 +69,22 @@
     android:layout_alignStart="@+id/recordProgressBar"
     android:layout_alignBottom="@+id/chronometer"
     android:layout_alignEnd="@+id/recordProgressBar">
+-->
+    <Button
+        android:id="@+id/play_btn"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_button"
+        android:gravity="center"
+        android:text="Play"
+        android:textColor="#fff"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/chronometer"
+        android:layout_alignStart="@+id/recordProgressBar"
+        android:layout_alignBottom="@+id/chronometer"
+        android:layout_alignEnd="@+id/recordProgressBar">
+
 
 </Button>
     <Button

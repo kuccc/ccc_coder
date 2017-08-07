@@ -20,7 +20,7 @@ public class MyApplication extends Application {
         JodaTimeAndroid.init(this);
         Realm.init(this);
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()//this 생략
-                .name("Gokaton.realm")
+                .name("Gokaton3.realm")
                 .schemaVersion(0)
                 .deleteRealmIfMigrationNeeded()
                 .build();

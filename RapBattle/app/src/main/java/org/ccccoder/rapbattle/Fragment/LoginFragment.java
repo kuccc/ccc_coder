@@ -92,10 +92,13 @@ public class LoginFragment extends Fragment {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     String login_result ="";
+    String user_idtext ="";
+    TextView user_tv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_login, container, false);
+        user_tv = (TextView)getActivity().findViewById(R.id.user_name_tv);
         loginChecked = true;
         pref = getActivity().getSharedPreferences("Auto_loginInfo2", Activity.MODE_PRIVATE);
         editor = pref.edit();
@@ -199,13 +202,14 @@ public class LoginFragment extends Fragment {
                             editor.putString("pwInput", pw);
                             editor.commit();
                         }
-                        EndHandler.sendEmptyMessage(0);
+                        user_idtext = id;
+                        EndHandler.sendEmptyMessage(0); //요거는 응답받았을 때 0번을 EndHandler로 신호를 보냄
                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_fragment_layout, new RecordFragment());
+                        ft.replace(R.id.content_fragment_layout, new RecordListFragment());
                         ft.commit();
                     } else {
                         login_result = responseString;
-                        EndHandler.sendEmptyMessage(1);
+                        EndHandler.sendEmptyMessage(1); //요거는 응답받았을 때 1번을 EndHandler로 신호를 보냄
                     }
 //Toast.makeText(getActivity().getApplicationContext(),responseString,Toast.LENGTH_LONG).show();
                 } catch (URISyntaxException e) {
@@ -228,6 +232,7 @@ public class LoginFragment extends Fragment {
         public void handleMessage(Message msg){
             if(msg.what==0){
                 Toast.makeText(getActivity().getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
+                user_tv.setText(user_idtext);
             }else if(msg.what==1){
                 Toast.makeText(getActivity().getApplicationContext(),login_result,Toast.LENGTH_LONG).show();
             }

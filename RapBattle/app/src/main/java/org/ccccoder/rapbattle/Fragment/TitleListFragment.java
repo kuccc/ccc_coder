@@ -43,13 +43,15 @@ public class TitleListFragment extends Fragment {
         mFab = (FloatingActionButton)view.findViewById(R.id.fab);
         realm = Realm.getDefaultInstance();
         //preset();
+        RealmResults<Title> temp = realm.where(Title.class).findAll();
+        if(temp.size() <4) preset();
         models = realm.where(Title.class).findAll();
         /*RecycleView 설정*/
         mRecyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-        mAdapter = new ItemAdapter(getActivity().getApplicationContext(), models, null);
+        //mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        mAdapter = new ItemAdapter(getActivity().getApplicationContext(), models, null, null);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
         mFab.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +82,7 @@ public class TitleListFragment extends Fragment {
         realm.beginTransaction();
         realm.copyToRealm(new_item2);
         realm.commitTransaction();
+
         Title new_item3 = new Title();
         new_item3.setName("탄산수");
         realm.beginTransaction();

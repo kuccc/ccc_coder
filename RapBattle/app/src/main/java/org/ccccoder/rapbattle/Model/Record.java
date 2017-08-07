@@ -18,7 +18,7 @@ public class Record extends RealmObject{
     private boolean isCustom;
     private String user_title;
     private String user_lyrics;
-    private long music_url;
+    private String music_url;
     private long count_likes;
     private long register_datetime;
 
@@ -49,8 +49,8 @@ public class Record extends RealmObject{
     public String getUser_lyrics(){return user_lyrics;}
     public void setUser_lyrics(String user_lyrics) {this.user_lyrics = user_lyrics;};
 
-    public long getMusic_url(){return  music_url;}
-    public void setMusic_url(long music_url){this.music_url = music_url;}
+    public String getMusic_url(){return  music_url;}
+    public void setMusic_url(String music_url){this.music_url = music_url;}
 
     public long getCount_likes(){return count_likes;}
     public void setCount_likes(long count_likes){this.count_likes = count_likes;}

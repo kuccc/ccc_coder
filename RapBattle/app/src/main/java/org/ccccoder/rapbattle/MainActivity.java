@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -29,6 +30,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
+import org.ccccoder.rapbattle.Fragment.BitListFragment;
 import org.ccccoder.rapbattle.Fragment.LoginFragment;
 import org.ccccoder.rapbattle.Fragment.RecordFragment;
 import org.ccccoder.rapbattle.Fragment.RecordListFragment;
@@ -44,15 +46,18 @@ import static android.content.ContentValues.TAG;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    TextView user_tv;
+    NavigationView nv;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-
+    String user_id ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        nv = (NavigationView)findViewById(R.id.nav_view);
+        user_tv = (TextView)nv.findViewById(R.id.user_name_tv);
         setSupportActionBar(toolbar);
         pref = getSharedPreferences("Auto_loginInfo2", Activity.MODE_PRIVATE);
         editor = pref.edit();
@@ -126,7 +131,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new TitleListFragment();
             title = "주제 모음";
         } else if (id == R.id.bit_list) {
-            fragment = new RecordListFragment();
+            fragment = new BitListFragment();
             title = "비트 모음";
         } else if (id == R.id.hot_list) {
             fragment = new RecordListFragment();
@@ -204,7 +209,7 @@ public class MainActivity extends AppCompatActivity
             if(msg.what==0){
                 Toast.makeText(getApplicationContext(),"자동 로그인 완료",Toast.LENGTH_LONG).show();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.content_fragment_layout, new RecordFragment());
+                ft.replace(R.id.content_fragment_layout, new RecordListFragment());
                 ft.commit();
             }else if(msg.what==1){
                 editor.clear(); //실패시 초기화
@@ -220,6 +225,7 @@ public class MainActivity extends AppCompatActivity
             // goto mainActivity
             String id = pref.getString("idInput", "");
             String pw = pref.getString("pwInput", "");
+            user_id = id;
             loginCheck(id, pw);//로그인
         }else
         {
